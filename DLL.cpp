@@ -1,3 +1,7 @@
+#include<stdio.h>
+#include<iostream>
+#include <cassert>
+using namespace std;
 class IntDLinkedList
 {
 private:
@@ -45,6 +49,7 @@ public:
                 head->prev = newNode;
             }
             head = newNode;
+            count++;
         }
         else if (index == count)
         {
@@ -60,8 +65,8 @@ public:
             Node *newNode = new Node(element, temp, temp->next);
             temp->next->prev = newNode;
             temp->next = newNode;
+            count++;
         }
-        count++;
     }
 
     int removeAt(int index)
@@ -239,8 +244,8 @@ private:
 int main(){
 IntDLinkedList list;
 int size = 10;
-for(int index = 0; index < size; index++){
-    list.add(index);
+for (int index = 0; index < size; index++) {
+    list.add(list.size(), index);
 }
 
 list.dump();
