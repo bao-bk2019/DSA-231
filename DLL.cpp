@@ -182,7 +182,7 @@ public:
 
     bool contains(int element)
     {
-        return indexOf(element) != -1;;
+        return indexOf(element) != -1;
     }
 
     int size()
