@@ -30,11 +30,13 @@ public:
     bool contains(const T &item);
     void toString(){
         Node *temp = this->head;
+        cout << '[';
         while (temp != this->tail)
         {
             cout << temp->data << ",";
             temp = temp->next;
         }
+        cout << ']';
     }
     Iterator begin()
     {
@@ -103,16 +105,15 @@ template <class T>
 DLinkedList<T>::Iterator::Iterator(DLinkedList<T> *pList, bool begin) 
 {
     this->pList = pList;
-    
     if (begin)
     {
-        current = pList->head;
-        index = 0;
+        this->current = pList->head;
+        this->index = 0;
     }
     else
     {
-        current = pList->tail;
-        index = pList->count - 1;
+        this->current = nullptr;
+        this->index = pList->count;
     }
     
 }
@@ -158,15 +159,9 @@ void DLinkedList<T>::Iterator::remove()
     *       If we remove first node of pList, Node* current point to nullptr.
     *       Then we use operator ++, Node* current will point to the head of pList.
     */
-//    DLinkedList<T>::Node *temp = current->previous;
-//    pList->removeAt(index);
-//    current = temp;
-//    if(current == nullptr){
-//     current = pList->head;
-//     index = 0;
-//    }else index--;
-pList->removeAt(index);
-index--;
+    pList->removeAt(index);
+    index--;
+    pList->toString();
 }
 
 template<class T>
@@ -190,8 +185,8 @@ template<class T>
 typename DLinkedList<T>::Iterator DLinkedList<T>::Iterator::operator++(int) 
 {
     Iterator temp = *this;
-        ++(*this);
-        return temp;
+    ++(*this);
+    return temp;
 }
 
 
@@ -399,7 +394,8 @@ void DLinkedList<T>::clear()
 
 int main(){
 
-    DLinkedList<int> list;
+
+DLinkedList<int> list;
 int size = 10;
 for (int idx = 0; idx < size; idx++)
 {
@@ -410,7 +406,7 @@ DLinkedList<int>::Iterator it = list.begin();
 while (it != list.end())
 {
     it.remove();
-    it;
+    it++;
 }
 list.toString();
 }
