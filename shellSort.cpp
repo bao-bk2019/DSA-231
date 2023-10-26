@@ -20,7 +20,7 @@ void inssort2(E A[], int n, int incr, int& swap) {
 }
 template <typename E, typename Comp>
 void shellsort(E A[], int n, int& swap) { // Shellsort
-  for (int i=n/2; i>1; i/=2)      // For each increment
+  for (int i=n/2; i>1 ; i/=2)      // For each increment
     for (int j=0; j<i; j++)       // Sort each sublist
       inssort2<E,Comp>(&A[j], n-j, i, swap);
   inssort2<E,Comp>(A, n, 1, swap);
@@ -35,7 +35,7 @@ struct CustomComparator {
 
 int main() {
     int count = 0;
-    int a[]={59, 20, 17, 13, 28, 14, 23, 83, 36, 98, 11, 70, 65, 41, 42, 15};  
+    int a[]={59, 20, 17, 13, 28, 14, 23, 83, 36, 98, 11, 70, 65, 41, 42, 15, 55, 62, 51, 40, 60, 61, 67, 99, 89};  
     int b[] = {3, 5, 6, 8, 1, 2};  
     int n = sizeof(a) / sizeof(a[0]);
     int x = sizeof(b) / sizeof(b[0]);
