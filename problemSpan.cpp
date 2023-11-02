@@ -11,7 +11,7 @@ vector<int> stock_span(const vector<int>& ns) {
 
     for (size_t i = 0; i < ns.size(); ++i) {
         // Pop elements from the stack while the stack is not empty and the current element is greater than the top element's price
-        while (!st.empty() && ns[i] >= ns[st.top()]) {
+        while (!st.empty() && ns[i] > ns[st.top()]) {
             st.pop();
         }
 
@@ -31,7 +31,16 @@ vector<int> stock_span(const vector<int>& ns) {
 
 }
 int main(){
-    vector<int> input1 = { 100, 110, 120, 130, 140, 150};
+    vector<int> input1 = { 64,	40,	21,	52,	9,	57,	79,	4,	16,	57,
+36,	26,	17,	42,	58,	25,	62,	70,	62,	82,
+33, 34,	43,	64,	48,	75,	9,	18,	22,	84,
+60,	12,	63,	3,	24,	70,	37,	33,	89,	89,
+4,	87,	87,	68,	72,	14,	40,	60,	10,	87,
+80,	73,	43,	57,	17,	64,	71,	21,	37	,49,
+19,	77,	38,	33,	78,	34,	77,	73,	80,	44,
+99,	83,	65,	5,	5,	4,	59,	80,	60,	89,
+82,	27,	27,	51,	23,	65,	85,	92,	47,	79,
+58,	84,	30,	98,	1,	27,	57,	67,	11,	68};
     vector<int> input2 = {10, 4, 5, 90, 120, 80};
     input1 = stock_span(input1);
     input2 = stock_span(input2);
